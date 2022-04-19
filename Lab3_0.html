@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lanf="ru">
+ <head>
+  <meta charset="utf-8">
+  <title>Lab3</title>
+  <script>
+    function perevod (){
+          let X = Number (document.getElementById("a").value);
+          let Y = Number (document.getElementById("b").value);
+          let Znak = Number (document.getElementById("zn").value)
+          if (Znak==1) {alert(X+Y)};
+          if (Znak==2) {alert(X-Y)};
+          if (Znak==3) {alert(X*Y)};
+          if (Znak==4) {alert(X/Y)};
+          if (Znak <1) {alert("Введите правильное действие")};
+          if (Znak >4) {alert("Введите правильное действие")};
+    }
+      </script>
+ </head>
+ <style>
+   body { margin-top: 1em;
+    margin-left: 1em;}
+ </style>
+ <body>
+  <p><b>Текст задания</b></p>
+  <p>Даны два действительных положительных числа x и y. Арифметические действия пронумерованы (1 - +, 2- -, 3 - *, 4 - /). Написать программу, которая будет выполнять то или иное арифметическое действие согласно введенной цифре.</p>
+ <form name="schet" method="get">
+  <p><b>Введите число х</b><br>
+   <input type="number" id="a">
+  </p>
+  <p><b>Введите число у</b><br>
+    <input type="number" size="40" id="b">
+   </p>
+  <p><b>Введите действие (1-сложение, 2-вычитание, 3-умножение, 4-деление)</b></p>
+  <p><input type="number" size="40" id="zn"> </p>
+  <p><button type="button" onclick="perevod();">Вычислить</button>
+  <input type="reset" value="Очистить"></p>
+  </form>
+ </body>
+</html>
