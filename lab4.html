@@ -15,7 +15,8 @@
     }
 
     div.act {
-      color: red;
+      color: white;
+      background-color: red;
     }
 
     div.pas {
@@ -24,16 +25,36 @@
 
     div.way {
       color: green;
+      background-color: green;
     }
   </style>
   <script>
     var activeRC = '';
-    function setAct(rc) { document.getElementById(rc).className = 'act' }
-    function setPas(rc) { document.getElementById(rc).className = 'pas' }
-    function click15(rc) {
-      if (activeRC != '') { setPas(activeRC) }
-      setAct(rc);
+    function setActive(rc) {
+      if (rc == activeRC) { return }
+      var p = document.getElementById(rc);
+      if (p.innerText == '+') { return }
+      p.className = 'act';
+      if (activeRC != '') { document.getElementById(activeRC).className = 'pas' }
       activeRC = rc
+    }
+    function swapFree(rc) {
+      if (activeRC == '') { return }
+      if (rc == activeRC) { return }
+      var f = document.getElementById(rc);
+      if (f.innerText != '+') { return }
+      var a = document.getElementById(activeRC);
+      var t = a.innerText;
+      if (t == '+') { return }
+      a.innerText = '+';
+      a.className = 'way';
+      f.innerText = t;
+      f.className = 'act';
+      activeRC = rc
+    }
+    function click15(rc) {
+      setActive(rc);
+      swapFree(rc)
     }
   </script>
 </head>
