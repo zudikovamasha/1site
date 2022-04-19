@@ -6,15 +6,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Lab 4</title>
+  <style>
+    td {
+      border: 1px;
+      border-color: blue;
+      border-style: double;
+      text-align: center;
+    }
+
+    div.act {
+      color: red;
+    }
+
+    div.pas {
+      color: black;
+    }
+
+    div.way {
+      color: green;
+    }
+  </style>
   <script>
     var activeRC = '';
+    function setAct(rc) { document.getElementById(rc).className = 'act' }
+    function setPas(rc) { document.getElementById(rc).className = 'pas' }
     function click15(rc) {
-      console.log('----------------')
-      console.log(rc);
-      console.log(activeRC);
-      activeRC = rc;
-      console.log(activeRC);
-      console.log('----------------')
+      if (activeRC != '') { setPas(activeRC) }
+      setAct(rc);
+      activeRC = rc
     }
   </script>
 </head>
@@ -22,28 +41,60 @@
 <body>
   <table>
     <tr>
-      <td><button id="11" onclick="click15('11')">1</button></td>
-      <td><button id="12" onclick="click15('12')">2</button></td>
-      <td><button id="13" onclick="click15('13')">3</button></td>
-      <td><button id="14" onclick="click15('14')">4</button></td>
+      <td>
+        <div id="11" onclick="click15('11')" class="pas">1</div>
+      </td>
+      <td>
+        <div id="12" onclick="click15('12')" class="pas">2</div>
+      </td>
+      <td>
+        <div id="13" onclick="click15('13')" class="pas">3</div>
+      </td>
+      <td>
+        <div id="14" onclick="click15('14')" class="pas">4</div>
+      </td>
     </tr>
     <tr>
-      <td><button id="21" onclick="click15('21')">5</button></td>
-      <td><button id="22" onclick="click15('22')">6</button></td>
-      <td><button id="23" onclick="click15('23')">7</button></td>
-      <td><button id="24" onclick="click15('24')">8</button></td>
+      <td>
+        <div id="21" onclick="click15('21')" class="pas">5</div>
+      </td>
+      <td>
+        <div id="22" onclick="click15('22')" class="pas">6</div>
+      </td>
+      <td>
+        <div id="23" onclick="click15('23')" class="pas">7</div>
+      </td>
+      <td>
+        <div id="24" onclick="click15('24')" class="pas">8</div>
+      </td>
     </tr>
     <tr>
-      <td><button id="31" onclick="click15('31')">9</button></td>
-      <td><button id="32" onclick="click15('32')">10</button></td>
-      <td><button id="33" onclick="click15('33')">11</button></td>
-      <td><button id="34" onclick="click15('34')">12</button></td>
+      <td>
+        <div id="31" onclick="click15('31')" class="pas">9</div>
+      </td>
+      <td>
+        <div id="32" onclick="click15('32')" class="pas">10</div>
+      </td>
+      <td>
+        <div id="33" onclick="click15('33')" class="pas">11</div>
+      </td>
+      <td>
+        <div id="34" onclick="click15('34')" class="pas">12</div>
+      </td>
     </tr>
     <tr>
-      <td><button id="41" onclick="click15('41')">13</button></td>
-      <td><button id="42" onclick="click15('42')">14</button></td>
-      <td><button id="43" onclick="click15('43')">15</button></td>
-      <td><button id="44" onclick="click15('44')">+</button></td>
+      <td>
+        <div id="41" onclick="click15('41')" class="pas">13</div>
+      </td>
+      <td>
+        <div id="42" onclick="click15('42')" class="pas">14</div>
+      </td>
+      <td>
+        <div id="43" onclick="click15('43')" class="pas">15</div>
+      </td>
+      <td>
+        <div id="44" onclick="click15('44')" class="way">+</div>
+      </td>
     </tr>
   </table>
 </body>
