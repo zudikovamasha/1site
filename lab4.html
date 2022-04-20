@@ -31,46 +31,55 @@
     }
   </style>
   <script>
-    var activeRC = "";
-    function setActive(rc) {
-      if (rc == activeRC) {
-        return;
-      }
-      var p = document.getElementById(rc);
-      if (p.innerText == "+") {
-        return;
-      }
-      p.className = "act";
-      if (activeRC != "") {
-        document.getElementById(activeRC).className = "pas";
-      }
-      activeRC = rc;
+    function swapCells(busyID, freeID) {
+      if (busyID == freeID) { return }
+      var b = document.getElementById(busyID);
+      var f = document.getElementById(freeID);
+      var txt = b.innerText;
+      b.innerText = "+";
+      b.className = "free";
+      f.innerText = txt;
+      f.className = "busy"
     }
-    function swapFree(rc) {
-      if (activeRC == "") {
-        return;
+    function getFreeID(r, c) {
+      if (1 <= r && r <= 4 && 1 <= c && c <= 4) {
+        var freeID = String(r) + String(c);
+        var f = document.getElementById(freeID);
+        var t = f.innerText;
+        if (t == '+') { return freeID }
       }
-      if (rc == activeRC) {
-        return;
+      return ''
+    }
+    function moveCell(busyID) {
+      var r = Number(busyID[0]);
+      var c = Number(busyID[1]);
+      var freeID = getFreeID(r, c);
+      if (freeID != '') {
+        return
       }
-      var f = document.getElementById(rc);
-      if (f.innerText != "+") {
-        return;
+      freeID = getFreeID(r + 1, c);
+      if (freeID != '') {
+        swapCells(busyID, freeID);
+        return
       }
-      var a = document.getElementById(activeRC);
-      var t = a.innerText;
-      if (t == "+") {
-        return;
+      freeID = getFreeID(r - 1, c);
+      if (freeID != '') {
+        swapCells(busyID, freeID);
+        return
       }
-      a.innerText = "+";
-      a.className = "way";
-      f.innerText = t;
-      f.className = "act";
-      activeRC = rc;
+      freeID = getFreeID(r, c + 1);
+      if (freeID != '') {
+        swapCells(busyID, freeID);
+        return
+      }
+      freeID = getFreeID(r, c - 1);
+      if (freeID != '') {
+        swapCells(busyID, freeID);
+        return
+      }
     }
     function click15(rc) {
-      setActive(rc);
-      swapFree(rc);
+      moveCell(rc)
     }
   </script>
 </head>
