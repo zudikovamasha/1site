@@ -2,59 +2,75 @@
 <html lang="ru">
 
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lab 4</title>
   <style>
     td {
       border: 1px;
-      border-color: blue;
+      border-color: grey;
       border-style: double;
+    }
+
+    td>div {
+      width: 3em;
+      height: 3em;
       text-align: center;
+      vertical-align: middle;
+      display: table-cell;
     }
 
-    div.act {
+    td>div.busy {
       color: white;
-      background-color: red;
+      background-color: black;
     }
 
-    div.pas {
-      color: black;
-    }
-
-    div.way {
-      color: green;
-      background-color: green;
+    td>div.free {
+      color: grey;
+      background-color: grey;
     }
   </style>
   <script>
-    var activeRC = '';
+    var activeRC = "";
     function setActive(rc) {
-      if (rc == activeRC) { return }
+      if (rc == activeRC) {
+        return;
+      }
       var p = document.getElementById(rc);
-      if (p.innerText == '+') { return }
-      p.className = 'act';
-      if (activeRC != '') { document.getElementById(activeRC).className = 'pas' }
-      activeRC = rc
+      if (p.innerText == "+") {
+        return;
+      }
+      p.className = "act";
+      if (activeRC != "") {
+        document.getElementById(activeRC).className = "pas";
+      }
+      activeRC = rc;
     }
     function swapFree(rc) {
-      if (activeRC == '') { return }
-      if (rc == activeRC) { return }
+      if (activeRC == "") {
+        return;
+      }
+      if (rc == activeRC) {
+        return;
+      }
       var f = document.getElementById(rc);
-      if (f.innerText != '+') { return }
+      if (f.innerText != "+") {
+        return;
+      }
       var a = document.getElementById(activeRC);
       var t = a.innerText;
-      if (t == '+') { return }
-      a.innerText = '+';
-      a.className = 'way';
+      if (t == "+") {
+        return;
+      }
+      a.innerText = "+";
+      a.className = "way";
       f.innerText = t;
-      f.className = 'act';
-      activeRC = rc
+      f.className = "act";
+      activeRC = rc;
     }
     function click15(rc) {
       setActive(rc);
-      swapFree(rc)
+      swapFree(rc);
     }
   </script>
 </head>
@@ -63,58 +79,58 @@
   <table>
     <tr>
       <td>
-        <div id="11" onclick="click15('11')" class="pas">1</div>
+        <div id="11" onclick="click15('11')" class="busy">1</div>
       </td>
       <td>
-        <div id="12" onclick="click15('12')" class="pas">2</div>
+        <div id="12" onclick="click15('12')" class="busy">2</div>
       </td>
       <td>
-        <div id="13" onclick="click15('13')" class="pas">3</div>
+        <div id="13" onclick="click15('13')" class="busy">3</div>
       </td>
       <td>
-        <div id="14" onclick="click15('14')" class="pas">4</div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div id="21" onclick="click15('21')" class="pas">5</div>
-      </td>
-      <td>
-        <div id="22" onclick="click15('22')" class="pas">6</div>
-      </td>
-      <td>
-        <div id="23" onclick="click15('23')" class="pas">7</div>
-      </td>
-      <td>
-        <div id="24" onclick="click15('24')" class="pas">8</div>
+        <div id="14" onclick="click15('14')" class="busy">4</div>
       </td>
     </tr>
     <tr>
       <td>
-        <div id="31" onclick="click15('31')" class="pas">9</div>
+        <div id="21" onclick="click15('21')" class="busy">5</div>
       </td>
       <td>
-        <div id="32" onclick="click15('32')" class="pas">10</div>
+        <div id="22" onclick="click15('22')" class="busy">6</div>
       </td>
       <td>
-        <div id="33" onclick="click15('33')" class="pas">11</div>
+        <div id="23" onclick="click15('23')" class="busy">7</div>
       </td>
       <td>
-        <div id="34" onclick="click15('34')" class="pas">12</div>
+        <div id="24" onclick="click15('24')" class="busy">8</div>
       </td>
     </tr>
     <tr>
       <td>
-        <div id="41" onclick="click15('41')" class="pas">13</div>
+        <div id="31" onclick="click15('31')" class="busy">9</div>
       </td>
       <td>
-        <div id="42" onclick="click15('42')" class="pas">14</div>
+        <div id="32" onclick="click15('32')" class="busy">10</div>
       </td>
       <td>
-        <div id="43" onclick="click15('43')" class="pas">15</div>
+        <div id="33" onclick="click15('33')" class="busy">11</div>
       </td>
       <td>
-        <div id="44" onclick="click15('44')" class="way">+</div>
+        <div id="34" onclick="click15('34')" class="busy">12</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="41" onclick="click15('41')" class="busy">13</div>
+      </td>
+      <td>
+        <div id="42" onclick="click15('42')" class="busy">14</div>
+      </td>
+      <td>
+        <div id="43" onclick="click15('43')" class="busy">15</div>
+      </td>
+      <td>
+        <div id="44" onclick="click15('44')" class="free">+</div>
       </td>
     </tr>
   </table>
